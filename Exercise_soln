@@ -1,0 +1,143 @@
+1.Create two folders project1 and project2.
+
+mkdir project1 project2
+
+2. Switch to project1 and create a repository in it named test_project
+
+cd project1
+mkdir test_project
+cd test_project/
+git init
+
+3. Switch to a new branch - 'staging'.
+
+git checkout -b staging
+
+4. Add a file in it - 'test1' and add content to it 'This is first commit'
+vim test1
+git add .
+git commit -m "this is my first commit"
+
+5.Push it to github
+git remote add origin https://github.com/neerajramuka/test_project.git
+git push origin staging
+
+6. Move to folder project2.
+cd ..
+cd project2
+git init
+git remote add origin https://github.com/neerajramuka/test_project.git
+
+7. Clone the repo in project2.
+
+git pull origin staging
+
+8. Switch to staging.
+
+git checkout staging
+
+9. Change the text in file 'test1' to 'This is second commit'.
+vim test1
+git commit -am "this is second commit"
+
+10. Commit and push to remote branch.
+
+git push origin staging
+
+11.Move to project1.
+
+cd ..
+cd project1
+
+12. Switch to staging branch.
+// already in staging
+
+13. Change the text in file 'test1' to 'This is third commit'.
+vim test1
+git commit -am "this is third commit"
+
+14. Commit and push to remote branch. (Explain what happened here).
+
+git push origin staging
+//here file got rejected as this file will distroy the original file present in remote repository
+
+15. Switch to master.
+git checkout master
+
+16. Merge staging branch into master.
+git merge staging
+
+17.Create a new branch testing.
+git checkout -b testing
+
+18. Change the text to 'A is an alphabet' and commit.
+
+vim test1
+git commit -am "A is an alphabet"
+
+19. Repeat the 'step 18' seven times and each time update the alphabet 'A' to 'B' to 'C' etc.(Don't forget to commit the change everytime)
+
+vim test1
+git commit -am "B is an alphabet"
+vim test1
+git commit -am "C is an alphabet"
+vim test1
+git commit -am "D is an alphabet"
+vim test1
+git commit -am "E is an alphabet"
+vim test1
+git commit -am "F is an alphabet"
+vim test1
+git commit -am "G is an alphabet"
+
+20. Push the branch to github.
+
+git push origin testing
+
+21. Checkout to master.
+git checkout master
+
+22. Change the text '1 is a number' and commit.
+
+vim test1
+git commit -am "1 is a number"
+
+23. Repeat the 'step 22' seven times and each time update the number '1' to '2' to '3' etc.(Don't forget to commit the change everytime)
+
+vim test1
+git commit -am "2 is a number"
+vim test1
+git commit -am "3 is a number"
+vim test1
+git commit -am "4 is a number"
+vim test1
+git commit -am "5 is a number"
+vim test1
+git commit -am "6 is a number"
+vim test1
+git commit -am "7 is a number"
+
+24. Push master branch to github.
+git push origin master
+
+25. Now, rebase testing into master(and don't push the new master and testing branch).
+git checkout testing
+git rebase master
+//solving conflicts 7 times adding and continuing rebasing
+
+26. Move to project2.
+cd project2
+
+27. Track testing branch
+git pull origin testing
+git checkout --track origin/testing
+
+28. Checkout to master.
+git checkout master
+
+29. Merge branch testing into master.
+git merge testing
+
+30. Share your views about the difference between master and testing.
+
+master and testing branch wil contain the same file content. as when we rebase testing into master. All the conflicts appeared and was solved according to the priority. After that when we merged testing into master, it simple overright the content of master by testing.
